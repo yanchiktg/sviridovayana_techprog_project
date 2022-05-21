@@ -147,4 +147,76 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
     }
+
+    public void Operation(View view) {
+        Cheker = true;
+        OldNumber = editText.getText().toString();
+        switch (view.getId()){
+            case R.id.buMultiply: Operator = "*" ;break;
+            case R.id.buDivide: Operator = "/" ;break;
+            case R.id.buPlus: Operator = "+" ;break;
+            case R.id.buMinus: Operator = "-" ;break;
+        }
+    }
+
+    public void ClickEqual(View view) {
+        String Newnumber = editText.getText().toString();
+        Double Result = 0.0;
+
+        switch (Operator){
+            case "-": Result = Double.parseDouble(OldNumber) - Double.parseDouble(Newnumber) ;break;
+            case "+": Result = Double.parseDouble(OldNumber) + Double.parseDouble(Newnumber) ;break;
+            case "*": Result = Double.parseDouble(OldNumber) * Double.parseDouble(Newnumber) ;break;
+            case "/": Result = Double.parseDouble(OldNumber) / Double.parseDouble(Newnumber) ;break;
+        }
+
+        DecimalFormat df = new DecimalFormat("#.#####");
+        editText.setText(df.format(Result)+"");
+        Operator = "";
+    }
+
+    public void CClick(View view) {
+        editText.setText("");
+        editText.setText("0");
+        Cheker = true;
+    }
+
+    public boolean DotIsPresent(String number){
+        if(number.indexOf(".") == -1){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public boolean MinusIsPresent(String number){
+        if(number.indexOf("-") == -1){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public void ClickPercent(View view) {
+        if(Operator == ""){
+            String number = editText.getText().toString();
+            double temp = Double.parseDouble(number)/100;
+            editText.setText(temp+"");
+        }
+        else{
+            String Newnumber = editText.getText().toString();
+            Double Result = 0.0;
+            switch (Operator){
+                case "-": Result = Double.parseDouble(OldNumber) - (Double.parseDouble(Newnumber)*Double.parseDouble(OldNumber)/100);break;
+                case "+": Result = Double.parseDouble(OldNumber) + (Double.parseDouble(Newnumber)*Double.parseDouble(OldNumber)/100) ;break;
+                case "*": Result = Double.parseDouble(OldNumber) * (Double.parseDouble(Newnumber)/100) ;break;
+                case "/": Result = Double.parseDouble(OldNumber) / (Double.parseDouble(Newnumber)/100) ;break;
+            }
+            editText.setText(Result+"");
+            Operator = "";
+        }
+
+    }
 }
