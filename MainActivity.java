@@ -21,4 +21,130 @@ public class MainActivity extends AppCompatActivity {
         editText = findViewById(R.id.Result);
     }
 
+    public void ClickNumber(View view) {
+        if(Cheker)
+            editText.setText("");
+        Cheker = false;
+        String number = editText.getText().toString();
+        switch (view.getId()){
+            case R.id.bu1:
+                if(ZeroIsFirst(number) && number.length() == 1){
+                    number = number.substring(1);
+                }
+                number = number+"1" ;
+                break;
+
+            case R.id.bu2:
+                if(ZeroIsFirst(number) && number.length() == 1){
+                    number = number.substring(1);
+                }
+                number = number+"2" ;
+                break;
+
+            case R.id.bu3:
+                if(ZeroIsFirst(number) && number.length() == 1){
+                    number = number.substring(1);
+                }
+                number = number+"3" ;
+                break;
+
+            case R.id.bu4:
+                if(ZeroIsFirst(number) && number.length() == 1){
+                    number = number.substring(1);
+                }
+                number = number+"4" ;
+                break;
+
+            case R.id.bu5:
+                if(ZeroIsFirst(number) && number.length() == 1){
+                    number = number.substring(1);
+                }
+                number = number+"5" ;
+                break;
+
+            case R.id.bu6:
+                if(ZeroIsFirst(number) && number.length() == 1){
+                    number = number.substring(1);
+                }
+                number = number+"6" ;
+                break;
+
+            case R.id.bu7:
+                if(ZeroIsFirst(number) && number.length() == 1){
+                    number = number.substring(1);
+                }
+                number = number+"7" ;
+                break;
+
+            case R.id.bu8:
+                if(ZeroIsFirst(number) && number.length() == 1){
+                    number = number.substring(1);
+                }
+                number = number+"8" ;
+                break;
+
+            case R.id.bu9:
+                if(ZeroIsFirst(number) && number.length() == 1){
+                    number = number.substring(1);
+                }
+                number = number+"9" ;
+                break;
+
+            case R.id.bu0:
+                if(ZeroIsFirst(number) && number.length() == 1) {
+                    number = "0";
+                }
+                else {
+                    number = number + "0";
+                }
+                break;
+
+            case R.id.buDot:
+                if (DotIsPresent(number)) {
+                    if (number.length() == 0) {
+                        number = number + "0.";
+                    }
+                    else{
+                        number = number + ".";
+                    }
+                }
+                break;
+
+            case R.id.buPlusMinus:
+                if(NumberIsZero(number)) {
+                    if (MinusIsPresent(number))
+                        number = "-" + number;
+                    else
+                        number = number.substring(1);
+                }
+                else{
+                    number = "0";
+                    Cheker = true;
+                }
+                break;
+        }
+        editText.setText(number);
+    }
+
+    private boolean ZeroIsFirst(String number){
+        if(number.equals("")){
+            return true;
+        }
+
+        if(number.charAt(0) == '0'){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    private boolean NumberIsZero(String number){
+        if(number.equals("0") || number.equals("")){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
 }
